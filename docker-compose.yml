@@ -1,0 +1,30 @@
+version: '3.4'
+
+networks:
+  container_network:
+
+services:
+  application:
+    container_name: application
+    build: ./
+    restart: always
+    env_file: container.env
+    depends_on:
+      - postgresql
+    ports:
+      - 3000:3000
+    networks:
+      - container_network
+
+  postgresql:
+    container_name: postgresql
+    image: postgres:12.4-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: 'username'
+      POSTGRES_PASSWORD: 'password'
+      POSTGRES_DB: 'db'
+    ports:
+      - 5432:5432
+    networks:
+      - container_network

@@ -1,0 +1,7 @@
+{
+  "exit": true,
+  "recursive": true,
+  "require": "source-map-support/register",
+  "full-trace": true,
+  "timeout": false
+}
